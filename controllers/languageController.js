@@ -1,6 +1,6 @@
 const express = require('express')
 const languages = express.Router()
-const languagesModel = require('../models/languagesModel')
+const LanguagesModel = require('../models/languagesModel')
 
 
 languages.get('/', (req, res) => {
