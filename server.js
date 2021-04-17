@@ -1,6 +1,9 @@
+require('dotenv').config();
+const PORT = process.env.PORT;
+const mongodbURI = process.env.MONGODBURI
 const express = require('express')
+const session = require('express-session')
 const app = express()
-const PORT = 3060
 
 //Setup Mongoose
 const mongoose = require('mongoose');
@@ -21,11 +24,25 @@ db.once('open', ()=> console.log('DB connected...'));
 db.on('error', (err)=> console.log(err.message));
 db.on('disconnected', ()=> console.log('mongoose disconnected'));
 
+// MIDDLEWARES
+//interpreting incoming request as JSON
+app.use(express.json());
+
+app.use(
+  session({
+    secret: process.env.SECRET,
+    resave: false, // default more info: https://www.npmjs.com/package/express-session#resave
+    saveUninitialized: false // default  more info: https://www.npmjs.com/package/express-session#resave
+  })
+)
+
 //controllers
 app.use('/languages', require('./controllers/languageController'))
+app.use('/users', require('./controllers/userController.js'))
+app.use('/sessions', require('./controllers/sessionController.js'))
 
 app.listen(PORT, () => {
-	console.log('Server is listening')
+	console.log('Server is listening on port', PORT)
   })
 
   //localhost:3060/languages
