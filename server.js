@@ -5,6 +5,10 @@ const PORT = 3060
 //Setup Mongoose
 const mongoose = require('mongoose');
 
+//middleware
+app.use(express.json()); //use .json(), not .urlencoded()
+
+
 // set up connection with the DB
 mongoose.connect('mongodb://localhost:27017/holidaysDB',{
 	useNewUrlParser:true,
