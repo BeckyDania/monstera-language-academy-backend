@@ -19,8 +19,13 @@ db.once('open', ()=> console.log('DB connected...'));
 db.on('error', (err)=> console.log(err.message));
 db.on('disconnected', ()=> console.log('mongoose disconnected'));
 
+// MIDDLEWARES
+//interpreting incoming request as JSON
+app.use(express.json());
+
 //controllers
 app.use('/languages', require('./controllers/languageController'))
+app.use('/users', require('./controllers/userController.js'))
 
 app.listen(PORT, () => {
 	console.log('Server is listening on port', PORT)
