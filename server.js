@@ -1,6 +1,8 @@
+require('dotenv').config();
+const PORT = process.env.PORT;
+const mongodbURI = process.env.MONGODBURI
 const express = require('express')
 const app = express()
-const PORT = 3060
 
 //Setup Mongoose
 const mongoose = require('mongoose');
@@ -21,7 +23,7 @@ db.on('disconnected', ()=> console.log('mongoose disconnected'));
 app.use('/languages', require('./controllers/languageController'))
 
 app.listen(PORT, () => {
-	console.log('Server is listening')
+	console.log('Server is listening on port', PORT)
   })
 
   //localhost:3060/languages
