@@ -13,7 +13,7 @@ app.use(express.json()); //use .json(), not .urlencoded()
 
 
 // set up connection with the DB
-mongoose.connect('mongodb://localhost:27017/languagesDB',{
+mongoose.connect(mongodbURI,{
 	useNewUrlParser:true,
 	useUnifiedTopology: true
 });
