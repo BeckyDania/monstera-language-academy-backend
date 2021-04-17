@@ -22,8 +22,8 @@ languages.post('/', (req, res) => {
   })
 })
 
-//DELETE ROUTE
-languages.delete('/:id', (req, res) => {
+//DELETE ROUTE - Not deleting anything
+/* languages.delete('/:id', (req, res) => {
   LanguagesModel.findByIdAndDelete(req.params.id, (error, deletedLanguage) => {
     if (error) {
       res.status(400).json({ error: error.message })
@@ -33,10 +33,10 @@ languages.delete('/:id', (req, res) => {
     }
     res.status(200).json({message: 'Translation of ' + deletedLanguage.content + ' deleted successfully'}) 
   })
-})
+}) */
 
 
-//Update Route
+//Update Route - soon to update with pronunciation
 languages.put('/:id', (req, res) => {
 	LanguagesModel.findByIdAndUpdate(req.params.id, req.body, {new: true},  (error, updatedLanguage) => {
 	  if (error) {
