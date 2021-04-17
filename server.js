@@ -6,7 +6,7 @@ const PORT = 3060
 const mongoose = require('mongoose');
 
 // set up connection with the DB
-mongoose.connect('mongodb://localhost:27017/holidaysDB',{
+mongoose.connect('mongodb://localhost:27017/languagesDB',{
 	useNewUrlParser:true,
 	useUnifiedTopology: true
 });
