@@ -5,6 +5,8 @@ const express = require('express')
 const session = require('express-session')
 const app = express()
 
+
+
 //Setup Mongoose
 const mongoose = require('mongoose');
 
@@ -40,6 +42,7 @@ app.use(
 app.use('/languages', require('./controllers/languageController'))
 app.use('/users', require('./controllers/userController.js'))
 app.use('/sessions', require('./controllers/sessionController.js'))
+app.use('/translations', require('./controllers/googleTranslate'))
 
 app.listen(PORT, () => {
 	console.log('Server is listening on port', PORT)
