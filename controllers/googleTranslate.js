@@ -55,7 +55,7 @@ const listLanguages = async function(req, res){
     languages.forEach((language) => console.log(language));
 }
 
-//listLanguages();
+listLanguages();
 
 
 

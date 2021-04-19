@@ -56,33 +56,8 @@ app.use('/languages', require('./controllers/languageController'))
 app.use('/users', require('./controllers/userController.js'))
 app.use('/sessions', require('./controllers/sessionController.js'))
 app.use('/translations', require('./controllers/googleTranslate'))
-//app.use('/textToSpeech', require('./controllers/googleTextToSpeech'))
-/* 
+app.use('/textToSpeech', require('./controllers/googleTextToSpeech'))
 
-app.use(async function detectLanguage() {
-  let [detections] = await translate.detect(text);
-  detections = Array.isArray(detections) ? detections : [detections];
-  console.log("Detections:");
-  detections.forEach((detection) => {
-      console.log(detection);
-  });
-  app.locals.detectLanguage = detectLanguage()
-  })
-
-
-
-
-app.use(async function translateText() {
-  let [translations] = await translate.translate(text, target);
-  translations = Array.isArray(translations) ? translations : [translations];
-  console.log("Translations:");
-  translations.forEach((translation, i) => {
-      console.log(`${text[i]} => (${target}) ${translation}`);
-  });
-  app.locals.translateText= translateText()
-})
-
- */
 
  app.listen(PORT, () => {
 	console.log('Server is listening on port', PORT)
