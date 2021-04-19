@@ -4,7 +4,7 @@ const {Schema, model} =  mongoose;
 const languageSchema = new Schema({
 	detectedSourceLanguage: {type: String },
 	target: {type: String, required: true},
-	q : {type: String, required: true},
+	query : {type: String, required: true},
 	translations: {type: Object}
 })
 

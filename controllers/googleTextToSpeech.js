@@ -3,10 +3,6 @@ const GoogleTextToSpeech = require('@google-cloud/text-to-speech');
 const express = require('express')
 const textToSpeech = express.Router()
 
-const TOKEN_ARG = 2;
-const tokenPath = process.argv[TOKEN_ARG];
-process.env.GOOGLE_APPLICATION_CREDENTIALS = './token.json'
-
 // Import other required libraries
 const fs = require('fs');
 const util = require('util');
@@ -36,4 +32,4 @@ async function quickStart() {
 }
 quickStart();
 
-module.exports = textToSpeech;
+module.exports = textToSpeech

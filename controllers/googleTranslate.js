@@ -19,10 +19,10 @@ const text = [
     "это очень хороший API",
 ];
 const target = "en";
- 
 
-//const detectLanguage = async function(req, res){
-async function detectLanguage() {
+
+const detectLanguage = async function(req, res){
+//async function detectLanguage() {
 let [detections] = await translate.detect(text);
     detections = Array.isArray(detections) ? detections : [detections];
     console.log("Detections:");
@@ -46,15 +46,16 @@ const translateText = async function(req, res){
 
 translateText();
 
-
-async function listLanguages() {
+ 
+const listLanguages = async function(req, res){
+//async function listLanguages() {
     const languages = await translate.getLanguages();
 
     console.log("Languages:");
     languages.forEach((language) => console.log(language));
 }
 
-listLanguages();
+//listLanguages();
 
 
 
