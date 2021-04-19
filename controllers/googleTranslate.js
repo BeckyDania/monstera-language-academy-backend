@@ -1,3 +1,4 @@
+
 //Setup API
 const { Translate } = require('@google-cloud/translate').v2;
 const express = require('express')
@@ -11,15 +12,21 @@ process.env.GOOGLE_APPLICATION_CREDENTIALS = './token.json'
 const translate = new Translate();
 
 
+// Creates a client
+const translate = new Translate();
+
+
 const text = [
     "这是一个非常好的API",
     "to jest bardzo dobre API",
     "это очень хороший API",
 ];
 const target = "en";
+ 
 
+//const detectLanguage = async function(req, res){
 async function detectLanguage() {
-    let [detections] = await translate.detect(text);
+let [detections] = await translate.detect(text);
     detections = Array.isArray(detections) ? detections : [detections];
     console.log("Detections:");
     detections.forEach((detection) => {
@@ -29,8 +36,8 @@ async function detectLanguage() {
 
 detectLanguage();  
 
-
-async function translateText() {
+const translateText = async function(req, res){
+//async function translateText() {
     let [translations] = await translate.translate(text, target);
     translations = Array.isArray(translations) ? translations : [translations];
     console.log("Translations:");
@@ -38,10 +45,11 @@ async function translateText() {
         console.log(`${text[i]} => (${target}) ${translation}`);
     });
 }
+ 
 
 translateText();
 
- 
+
 async function listLanguages() {
     const languages = await translate.getLanguages();
 
@@ -51,7 +59,7 @@ async function listLanguages() {
 
 listLanguages();
 
- 
+
 
  
 module.exports = translations
