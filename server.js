@@ -5,7 +5,20 @@ const express = require('express')
 const session = require('express-session')
 const app = express()
 
+const cors = require('cors')
 
+const whitelist = ['http://localhost:3060']
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
+app.use(cors(corsOptions)) // all routes are now exposed
 
 //Setup Mongoose
 const mongoose = require('mongoose');
@@ -42,6 +55,9 @@ app.use(
 app.use('/languages', require('./controllers/languageController'))
 app.use('/users', require('./controllers/userController.js'))
 app.use('/sessions', require('./controllers/sessionController.js'))
+app.use('/translations', require('./controllers/googleTranslate'))
+app.use('/textToSpeech', require('./controllers/googleTextToSpeech'))
+
 //app.use('/translations', require('./controllers/googleTranslate'))
 /* 
 
