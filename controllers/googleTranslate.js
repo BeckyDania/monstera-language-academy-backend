@@ -6,7 +6,7 @@ const translations = express.Router()
 const TOKEN_ARG = 2;
 const tokenPath = process.argv[TOKEN_ARG];
 process.env.GOOGLE_APPLICATION_CREDENTIALS = './token.json'
-/* 
+
 // Creates a client
 const translate = new Translate();
 
@@ -41,7 +41,7 @@ async function translateText() {
 
 translateText();
 
-/* 
+ 
 async function listLanguages() {
     const languages = await translate.getLanguages();
 
@@ -51,7 +51,7 @@ async function listLanguages() {
 
 listLanguages();
 
- */
+ 
 
  
 module.exports = translations

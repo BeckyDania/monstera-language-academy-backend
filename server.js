@@ -5,7 +5,20 @@ const express = require('express')
 const session = require('express-session')
 const app = express()
 
+const cors = require('cors')
 
+const whitelist = ['http://localhost:3060']
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
+app.use(cors(corsOptions)) // all routes are now exposed
 
 //Setup Mongoose
 const mongoose = require('mongoose');
