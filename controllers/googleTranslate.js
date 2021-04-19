@@ -6,11 +6,17 @@ const translations = express.Router()
 const TOKEN_ARG = 2;
 const tokenPath = process.argv[TOKEN_ARG];
 process.env.GOOGLE_APPLICATION_CREDENTIALS = './token.json'
-
+/* 
 // Creates a client
 const translate = new Translate();
 
-// const text = ["这是一个非常好的API", "to jest bardzo dobre API"];
+
+const text = [
+    "这是一个非常好的API",
+    "to jest bardzo dobre API",
+    "это очень хороший API",
+];
+const target = "en";
 
 async function detectLanguage() {
     let [detections] = await translate.detect(text);
@@ -21,14 +27,8 @@ async function detectLanguage() {
     });
 } 
 
-detectLanguage();
+detectLanguage();  
 
-const text = [
-    "这是一个非常好的API",
-    "to jest bardzo dobre API",
-    "это очень хороший API",
-];
-const target = "en";
 
 async function translateText() {
     let [translations] = await translate.translate(text, target);
@@ -53,7 +53,5 @@ listLanguages();
 
  */
 
-
-
-
+ 
 module.exports = translations
