@@ -8,9 +8,6 @@ const TOKEN_ARG = 2;
 const tokenPath = process.argv[TOKEN_ARG];
 process.env.GOOGLE_APPLICATION_CREDENTIALS = './token.json'
 
-// Creates a client
-const translate = new Translate();
-
 
 // Creates a client
 const translate = new Translate();
