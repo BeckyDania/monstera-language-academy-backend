@@ -25,8 +25,7 @@ languages.get('/', (req, res) => {
 
 
 //CREATE Route
-languages.post('/', (req, res) => {
-  
+
 // DETECT Language
 
 
