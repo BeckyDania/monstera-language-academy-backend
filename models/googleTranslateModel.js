@@ -1,11 +1,12 @@
+
 const mongoose = require('mongoose');
 const {Schema, model} =  mongoose;
 //test
 const translateSchema = new Schema({
-	detectedSourceLanguage: {type: String },
+	text : {type: String, required: true},
 	target: {type: String, required: true},
-	query : {type: String, required: true},
-	translations: {type: Object}
+	detectedSourceLanguage: {type: String },
+	translation: {type: Object}
 })
-
+  
 module.exports = model('Translate', translateSchema)
