@@ -7,10 +7,10 @@ const app = express()
 
 const cors = require('cors')
 
-const whitelist = ['http://localhost:3060']
+const whitelist = ['http://localhost:3000']
 const corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
+  origin: (origin, callback) => {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
       callback(null, true)
     } else {
       callback(new Error('Not allowed by CORS'))
@@ -57,6 +57,7 @@ app.use('/users', require('./controllers/userController.js'))
 app.use('/sessions', require('./controllers/sessionController.js'))
 app.use('/translations', require('./controllers/googleTranslate'))
 app.use('/textToSpeech', require('./controllers/googleTextToSpeech'))
+app.use('/glossary', require('./controllers/glossaryController.js'))
 
 
  app.listen(PORT, () => {
