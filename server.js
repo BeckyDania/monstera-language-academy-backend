@@ -57,6 +57,7 @@ app.use('/users', require('./controllers/userController.js'))
 app.use('/sessions', require('./controllers/sessionController.js'))
 app.use('/translations', require('./controllers/googleTranslate'))
 app.use('/textToSpeech', require('./controllers/googleTextToSpeech'))
+app.use('/glossary', require('./controllers/glossaryController.js'))
 
 
  app.listen(PORT, () => {
