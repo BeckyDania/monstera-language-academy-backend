@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const glossarySchema = Schema ({
-  word: { type: String, required: true },
+  text: { type: String, required: true },
+  translatedText: { type: String, required: true },
   translateFromLang: { type: String, required: true },
   translateToLang: { type: String, required: true },
   favorite: { type: Boolean, default: false }

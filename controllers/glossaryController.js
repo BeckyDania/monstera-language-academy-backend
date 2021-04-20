@@ -36,7 +36,7 @@ glossary.delete('/:id', (req, res) => {
       res.status(404).json({message: 'Word is not found'})
     }
     else {
-      res.status(200).json({message: `Word ${deletedWord.word} deleted successfully`})
+      res.status(200).json({message: `Word ${deletedWord.text} deleted successfully`})
     };
   });
 });
@@ -48,7 +48,7 @@ glossary.put('/:id', (req, res) => {
       res.status(400).json({error: error.message})
     }
     else {
-      res.status(200).json({ message: `Word ${updatedWord.word} updated successfully`, data: updatedWord })
+      res.status(200).json({ message: `Word ${updatedWord.text} updated successfully`, data: updatedWord })
     };
   });
 });
@@ -65,7 +65,7 @@ glossary.patch('/:id/addToFavorites', (req, res) => {
       word.save()
 
       res.status(200).json({
-        message: `Favorite flag for ${word.word} was set to ${word.favorite}`,
+        message: `Favorite flag for ${word.text} was set to ${word.favorite}`,
         data: word
       })
     };
