@@ -14,42 +14,6 @@ process.env.GOOGLE_APPLICATION_CREDENTIALS = './token.json'
 // Creates a client
 const translate = new Translate();
 
-/* 
-const text = [
-    "这是一个非常好的API",
-  //  "to jest bardzo dobre API",
-   // "это очень хороший API",
-];
-const target = "en";
- */
-
-/* const detectLanguage = async function(req, res){
-//async function detectLanguage() {
-let [detections] = await translate.detect(text);
-    detections = Array.isArray(detections) ? detections : [detections];
-    console.log("Detections:");
-    detections.forEach((detection) => {
-        console.log(detection);
-    });
-} 
-
-//detectLanguage();  
-
-const translateText = async function(req, res){
-//async function translateText() {
-    let [translations] = await translate.translate(text, target);
-    translations = Array.isArray(translations) ? translations : [translations];
-    console.log("Translations:", translations);
-//    translations.forEach((translation, i) => {
-   //     console.log(`${text[i]} => (${target}) ${translation}`);
- //   });
-}
-  */
-
-//translateText();
-
-
-
 
 translations.post('/', async (req, res) =>{
     const cachedTranslation = await translateTextModel.findOne({
@@ -93,3 +57,38 @@ translations.post('/', async (req, res) =>{
   
  
 module.exports = translations
+
+
+/* 
+const text = [
+    "这是一个非常好的API",
+  //  "to jest bardzo dobre API",
+   // "это очень хороший API",
+];
+const target = "en";
+ */
+
+/* const detectLanguage = async function(req, res){
+//async function detectLanguage() {
+let [detections] = await translate.detect(text);
+    detections = Array.isArray(detections) ? detections : [detections];
+    console.log("Detections:");
+    detections.forEach((detection) => {
+        console.log(detection);
+    });
+} 
+
+//detectLanguage();  
+
+const translateText = async function(req, res){
+//async function translateText() {
+    let [translations] = await translate.translate(text, target);
+    translations = Array.isArray(translations) ? translations : [translations];
+    console.log("Translations:", translations);
+//    translations.forEach((translation, i) => {
+   //     console.log(`${text[i]} => (${target}) ${translation}`);
+ //   });
+}
+  */
+
+//translateText();
