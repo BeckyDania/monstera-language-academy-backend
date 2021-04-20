@@ -1,19 +1,17 @@
+
 const express = require('express')
 const languages = express.Router()
-const LanguagesModel = require('../models/languagesModel');
-const { query } = require('express');
-//const googleTranslateController = require('./googleTranslate')
-const { Translate } = require('@google-cloud/translate').v2;
-const TOKEN_ARG = 2;
-const tokenPath = process.argv[TOKEN_ARG];
-process.env.GOOGLE_APPLICATION_CREDENTIALS = './token.json'
+const LanguagesModel = require('../models/languagesModel')
 
 
-languages.get('/', (req, res) => {
-  //res.send('Get route is working')
 
   // GET List of languages
 
+//Set up Index
+
+languages.get('/', (req, res) => {
+  //res.send('Get route is working')
+  
 
   LanguagesModel.find({}, (error, foundLanguages) => {
     if (error) {
@@ -23,13 +21,19 @@ languages.get('/', (req, res) => {
 	})
 })
 
-//CREATE Route
 
+
+
+//CREATE Route
 languages.post('/', (req, res) => {
   
 // DETECT Language
 
+
 // Translation 
+
+
+languages.post('/', (req, res) =>{
 
 
   LanguagesModel.create(req.body, (error, createdLanguage) => {
@@ -37,7 +41,10 @@ languages.post('/', (req, res) => {
       res.status(400).json({ error: error.message })
     }
     res.status(200).json(createdLanguage) //  .json() will send proper headers in response so client knows it's json coming back
+   
   })
+
+
 })
 
 //DELETE ROUTE - Not deleting anything

@@ -9,7 +9,7 @@ const cors = require('cors')
 
 const whitelist = ['http://localhost:3000']
 const corsOptions = {
-  origin: (origin, callback) => {
+  origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
       callback(null, true)
     } else {
@@ -22,6 +22,12 @@ app.use(cors(corsOptions)) // all routes are now exposed
 
 //Setup Mongoose
 const mongoose = require('mongoose');
+
+// include the method-override package
+const methodOverride = require('method-override')
+
+app.use(methodOverride('_method'))
+
 
 //middleware
 app.use(express.json()); //use .json(), not .urlencoded()
@@ -56,9 +62,7 @@ app.use('/languages', require('./controllers/languageController'))
 app.use('/users', require('./controllers/userController.js'))
 app.use('/sessions', require('./controllers/sessionController.js'))
 app.use('/translations', require('./controllers/googleTranslate'))
-app.use('/textToSpeech', require('./controllers/googleTextToSpeech'))
-app.use('/glossary', require('./controllers/glossaryController.js'))
-
+//app.use('/textToSpeech', require('./controllers/googleTextToSpeech'))
 
  app.listen(PORT, () => {
 	console.log('Server is listening on port', PORT)
