@@ -32,4 +32,4 @@ async function quickStart() {
 }
 quickStart();
 
-module.exports = textToSpeech
+//module.exports = textToSpeech

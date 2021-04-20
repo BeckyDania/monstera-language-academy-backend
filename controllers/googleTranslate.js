@@ -3,35 +3,51 @@
 const { Translate } = require('@google-cloud/translate').v2;
 const express = require('express')
 const translations = express.Router()
-
+const translateTextModel = require('../models/googleTranslateModel')
+ 
 const TOKEN_ARG = 2;
 const tokenPath = process.argv[TOKEN_ARG];
 process.env.GOOGLE_APPLICATION_CREDENTIALS = './token.json'
 
-
 // Creates a client
 const translate = new Translate();
-
-
+ 
 const text = [
     "这是一个非常好的API",
     "to jest bardzo dobre API",
     "это очень хороший API",
-];
+    ];
 const target = "en";
 
-
+//const detectLanguage = async (text) => {
 const detectLanguage = async function(req, res){
 //async function detectLanguage() {
-let [detections] = await translate.detect(text);
+  let [detections] = await translate.detect(text);
     detections = Array.isArray(detections) ? detections : [detections];
     console.log("Detections:");
     detections.forEach((detection) => {
         console.log(detection);
-    });
-} 
+    }); 
+    /* try {
+        let response = await translate.detect(query);
+        return response[0].language;
+    } catch (error) {
+        console.log(`Error at detectLanguage --> ${error}`);
+        return 0;
+    } */
+}
 
-detectLanguage();  
+detectLanguage()
+/* .then((res) => {
+             console.log(res);
+         })
+         .catch((err) => {
+             console.log(error);
+         }); */
+    
+
+
+//detectLanguage();  
 
 const translateText = async function(req, res){
 //async function translateText() {
@@ -46,7 +62,6 @@ const translateText = async function(req, res){
 
 translateText();
 
- 
 const listLanguages = async function(req, res){
 //async function listLanguages() {
     const languages = await translate.getLanguages();
@@ -54,8 +69,8 @@ const listLanguages = async function(req, res){
     console.log("Languages:");
     languages.forEach((language) => console.log(language));
 }
-
-//listLanguages();
+ 
+listLanguages();
 
 
 
