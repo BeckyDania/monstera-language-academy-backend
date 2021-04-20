@@ -4,11 +4,15 @@ const languages = express.Router()
 const LanguagesModel = require('../models/languagesModel')
 
 
+
+  // GET List of languages
+
 //Set up Index
 
 languages.get('/', (req, res) => {
   //res.send('Get route is working')
   
+
   LanguagesModel.find({}, (error, foundLanguages) => {
     if (error) {
       res.status(400).json({ error: error.message })
@@ -19,10 +23,18 @@ languages.get('/', (req, res) => {
 
 
 
+
 //CREATE Route
+languages.post('/', (req, res) => {
+  
+// DETECT Language
+
+
+// Translation 
 
 
 languages.post('/', (req, res) =>{
+
 
   LanguagesModel.create(req.body, (error, createdLanguage) => {
     if (error) {
