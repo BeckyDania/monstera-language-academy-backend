@@ -63,6 +63,7 @@ app.use('/users', require('./controllers/userController.js'))
 app.use('/sessions', require('./controllers/sessionController.js'))
 app.use('/translations', require('./controllers/googleTranslate'))
 //app.use('/textToSpeech', require('./controllers/googleTextToSpeech'))
+app.use('/search', require('./controllers/searchController.js'))
 
  app.listen(PORT, () => {
 	console.log('Server is listening on port', PORT)
