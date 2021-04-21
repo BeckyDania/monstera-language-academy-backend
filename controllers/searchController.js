@@ -37,7 +37,7 @@ search.post('/', async (req, res) => {
     translateToLang: req.body.translateTo
   }
 
-  res.send(returnObject)
+  res.status(200).json(returnObject)
 })
 
 module.exports = search
