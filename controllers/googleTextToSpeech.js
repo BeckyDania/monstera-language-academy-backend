@@ -30,6 +30,6 @@ async function quickStart() {
   await writeFile('output.mp3', response.audioContent, 'binary');
   console.log('Audio content written to file: output.mp3');
 }
-quickStart();
+//quickStart();
 
 //module.exports = textToSpeech
