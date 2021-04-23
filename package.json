@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Backend for word translation app - Team project -Valeriya Ilina &amp; BeckyDania",
   "main": "server.js",
+  "engines": {
+    "node": "15.3.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
