@@ -15,7 +15,8 @@ const corsOptions = {
     } else {
       callback(new Error('Not allowed by CORS'))
     }
-  }
+  },
+  credentials: true
 }
 
 app.use(cors(corsOptions)) // all routes are now exposed
@@ -57,14 +58,22 @@ app.use(
   })
 )
 
+const isAuthenticated = (req, res, next) => {
+    if (req.session.currentUser) {
+        return next()
+    } else {
+        res.status(403).json({msg:"loging require"})
+    }
+}
+
 //controllers
-app.use('/languages', require('./controllers/languageController'))
+app.use('/languages', isAuthenticated, require('./controllers/languageController'))
 app.use('/users', require('./controllers/userController.js'))
-app.use('/sessions', require('./controllers/sessionController.js'))
-app.use('/translations', require('./controllers/googleTranslate'))
+app.use('/translations', isAuthenticated, require('./controllers/googleTranslate'))
 //app.use('/textToSpeech', require('./controllers/googleTextToSpeech'))
-app.use('/glossary', require('./controllers/glossaryController.js'))
-app.use('/search', require('./controllers/searchController.js'))
+app.use('/glossary', isAuthenticated, require('./controllers/glossaryController.js'))
+app.use('/search', isAuthenticated, require('./controllers/searchController.js'))
+
 
  app.listen(PORT, () => {
 	console.log('Server is listening on port', PORT)

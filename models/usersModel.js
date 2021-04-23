@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const userSchema = Schema ({
   username: { type: String, unique: true, required: true },
-  password: String
+  password: { type:String, required: true },
+  glossaryItems: [{ type: Schema.Types.ObjectId, ref: 'Glossary'}]
 }, { timestamps: true });
 
 //creating collection/model

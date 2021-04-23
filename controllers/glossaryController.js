@@ -1,17 +1,25 @@
 const express = require('express')
 const glossary = express.Router()
 const Glossary = require('../models/glossaryModel.js')
+const User = require('../models/usersModel.js');
 
 // get list of all words
 glossary.get('/', (req, res) => {
-  Glossary.find({}, (error, foundWords) => {
+  User.findById(req.session.currentUser._id, (error, foundUser) => {
     if (error) {
-      res.status(400).json(error)
+      res.status(400).json({error: error.message})
     }
     else {
-      res.status(200).json(foundWords)
-    };
-  });
+      Glossary.find({_id: foundUser.glossaryItems}, (error, foundWords) => {
+        if (error) {
+          res.status(400).json(error)
+        }
+        else {
+          res.status(200).json(foundWords)
+        };
+      });
+    }
+  })
 });
 
 // add word to the glossary
@@ -21,7 +29,16 @@ glossary.post('/', (req, res) => {
       res.status(400).json({error: error.message})
     }
     else {
-      res.status(201).json(createdWord)
+      User.findById(req.session.currentUser._id, (error, foundUser) => {
+        if (error) {
+          res.status(400).json({error: error.message})
+        }
+        else {
+          foundUser.glossaryItems.push(createdWord)
+          foundUser.save()
+          res.status(201).json(createdWord)
+        }
+      })
     };
   });
 });
