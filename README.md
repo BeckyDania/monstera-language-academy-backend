@@ -4,7 +4,7 @@ Backend for word translation app
 <br>[![Contributors][contributors-shield]][contributors-url]</br>
 
 ## Description
-This is the repo of a Translation app where users can create an account to save translated words and test their knowledge.
+This is the backend repo of a Translation app where users can create an account to save translated words and test their knowledge.
 <br>The backend code sets up the user accounts and profiles with Express Sessions</br>
 <br>Google Translate API is utilized for the translations and each translation is saved to the Mongoose Database.
 
