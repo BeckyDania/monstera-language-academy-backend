@@ -1,5 +1,6 @@
 require('dotenv').config();
 const PORT = process.env.PORT;
+const BASEURL = process.env.BASEURL;
 const mongodbURI = process.env.MONGODBURI
 const express = require('express')
 const session = require('express-session')
@@ -7,7 +8,7 @@ const app = express()
 
 const cors = require('cors')
 
-const whitelist = ['http://localhost:3000']
+const whitelist = [BASEURL]
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
