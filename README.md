@@ -14,6 +14,7 @@ This is the backend repo of a Translation app where users can create an account 
 * Express-Sessions
 * Bcrypt
 * Google Translate API
+* [Frontend](https://github.com/Valeriya-Ilina/monstera-language-academy-frontend)
 
 # Dependencies
 * CORS
