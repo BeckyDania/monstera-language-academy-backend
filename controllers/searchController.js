@@ -17,7 +17,7 @@ if (!process.env.HEROKU) {
 else {
   // save token
   (async function() {
-    const writeFile = util.promisify(fs.writefile);
+    const writeFile = util.promisify(fs.writeFile);
     await writeFile('./google-credentials.json', process.env.GOOGLE_CREDENTIALS)
     console.log('Saved credentials to file')
   }());
