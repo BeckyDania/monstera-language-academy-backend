@@ -4,23 +4,11 @@ const fs = require('fs');
 const util = require('util');
 
 
-
-
 //Setup API
 const { Translate } = require('@google-cloud/translate').v2;
-// const TOKEN_ARG = 2;
-// const tokenPath = process.argv[TOKEN_ARG];
 
 if (!process.env.HEROKU) {
   process.env.GOOGLE_APPLICATION_CREDENTIALS = './google-credentials.json'
-}
-else {
-  // save token
-  (async function() {
-    const writeFile = util.promisify(fs.writeFile);
-    await writeFile('./google-credentials.json', process.env.GOOGLE_CREDENTIALS)
-    console.log('Saved credentials to file')
-  }());
 }
 
 // Creates a client
