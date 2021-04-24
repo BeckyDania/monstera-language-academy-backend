@@ -1,7 +1,5 @@
 const express = require('express')
 const search = express.Router()
-const fs = require('fs');
-const util = require('util');
 
 
 //Setup API
