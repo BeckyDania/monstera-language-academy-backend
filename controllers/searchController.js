@@ -3,6 +3,8 @@ const search = express.Router()
 
 //Setup API
 const { Translate } = require('@google-cloud/translate').v2;
+const TOKEN_ARG = 2;
+const tokenPath = process.argv[TOKEN_ARG];
 
 if (!process.env.HEROKU) {
   process.env.GOOGLE_APPLICATION_CREDENTIALS = './google-credentials.json'
