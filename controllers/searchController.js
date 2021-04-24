@@ -4,7 +4,9 @@ const search = express.Router()
 //Setup API
 const { Translate } = require('@google-cloud/translate').v2;
 
-process.env.GOOGLE_APPLICATION_CREDENTIALS = './google-credentials.json'
+if (!process.env.HEROKU) {
+  process.env.GOOGLE_APPLICATION_CREDENTIALS = './google-credentials.json'
+}
 
 // Creates a client
 const translate = new Translate();
